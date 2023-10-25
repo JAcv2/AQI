@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Matriz de confusión';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -167,6 +169,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Matriz de confusión</a></li>
+
+
+
+
 </ul>
 
     </div>
@@ -337,7 +343,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -353,6 +361,31 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Matriz de confusión</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-frac-tp-tn-tp-tn-fp-fn"><span class="math notranslate nohighlight">\(Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-frac-tp-tp-fp"><span class="math notranslate nohighlight">\(Precision = \frac{TP}{TP+FP}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-frac-tp-tp-fn"><span class="math notranslate nohighlight">\(Recall = \frac{TP}{TP+FN}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-2-frac-presicion-recall-presicion-recall"><span class="math notranslate nohighlight">\(F = 2*\frac{Presicion * recall}{Presicion + recall}\)</span></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -377,129 +410,49 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">mglearn</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_binary_confusion_matrix</span><span class="p">()</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
-</pre></div>
+<img alt="_images/d6bca273aac80e17b5caf0b89c9ec7556c2206c12cca51493484fe69659e110d.png" src="_images/d6bca273aac80e17b5caf0b89c9ec7556c2206c12cca51493484fe69659e110d.png" />
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-
-<span class="c1"># Create a simulated sales dataset</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">&#39;Marketing_Budget&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>  <span class="c1"># Marketing budget in thousands</span>
-    <span class="s1">&#39;Economy_Condition&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>  <span class="c1"># Scale of 2 to 10</span>
-    <span class="s1">&#39;Sales&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mi">500</span>  <span class="c1"># Sales in thousands</span>
-<span class="p">})</span>
-
-<span class="c1"># Add a realistic touch that sales are somewhat influenced by budget and economy</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Sales&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Marketing_Budget&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Economy_Condition&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span>
-
-<span class="c1"># Feature columns</span>
-<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Marketing_Budget&#39;</span><span class="p">,</span> <span class="s1">&#39;Economy_Condition&#39;</span><span class="p">]</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Sales&#39;</span><span class="p">]</span>
-
-<span class="c1"># Split the data</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># Train the model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Make predictions</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Calculate accuracy using a metric like RMSE</span>
-<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Root Mean Squared Error:&#39;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 166.94916049340634
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Marketing_Budget</th>
-      <th>Economy_Condition</th>
-      <th>Sales</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>548.813504</td>
-      <td>7</td>
-      <td>419.130904</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>715.189366</td>
-      <td>4</td>
-      <td>831.657712</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>602.763376</td>
-      <td>5</td>
-      <td>432.628155</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>544.883183</td>
-      <td>8</td>
-      <td>660.221374</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>423.654799</td>
-      <td>4</td>
-      <td>313.737391</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
+<p><strong>TN = True Negative</strong></p>
+<p>Verdaderos negativos, casos en los que el modelo predijo negativo y la realidad es negativa.</p>
+<p><strong>FP = False Positive</strong></p>
+<p>Falsos positivos, casos en los que el modelo predijo positivo pero la realidad es negativa.</p>
+<p><strong>FN = False Negative</strong></p>
+<p>Falsos negativos, casos en los que el modelo predijo negativo pero la realidad es positiva.</p>
+<p><strong>TP = True Positive</strong></p>
+<p>Verdaderos positivos, casos en los que el modelo predijo positivo y la realidad es positiva.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="accuracy">
+<h1>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h1>
+<p>¿Cuantas de las predicciones son correctas?</p>
+<section id="accuracy-frac-tp-tn-tp-tn-fp-fn">
+<h2><span class="math notranslate nohighlight">\(Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\)</span><a class="headerlink" href="#accuracy-frac-tp-tn-tp-tn-fp-fn" title="Permalink to this heading">#</a></h2>
+<p>Definición: La proporción de predicciones correctas entre el total de predicciones.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="precision">
+<h1>Precision<a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h1>
+<p>Conocido tambien como valor predictivo positivo (VPP), intenta responder la pregunta:</p>
+<p>¿Qué proporción de predicciones positivas fue correcta?</p>
+<section id="precision-frac-tp-tp-fp">
+<h2><span class="math notranslate nohighlight">\(Precision = \frac{TP}{TP+FP}\)</span><a class="headerlink" href="#precision-frac-tp-tp-fp" title="Permalink to this heading">#</a></h2>
+<p>Definición: La proporción de verdaderos positivos entre todos los casos predichos como positivos. Es muy usada cuando el objetivo es limitar el número de falsos positivos.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recall">
+<h1>Recall<a class="headerlink" href="#recall" title="Permalink to this heading">#</a></h1>
+<p>¿qué proporción de positivos reales se identificó en forma correcta?</p>
+<section id="recall-frac-tp-tp-fn">
+<h2><span class="math notranslate nohighlight">\(Recall = \frac{TP}{TP+FN}\)</span><a class="headerlink" href="#recall-frac-tp-tp-fn" title="Permalink to this heading">#</a></h2>
+<p>Definición: La proporción de verdaderos positivos entre todos los casos realmente positivos. Es muy usada cuando el objetivo es limitar el número de falsos positivos.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="f1-score">
+<h1>F1-Score<a class="headerlink" href="#f1-score" title="Permalink to this heading">#</a></h1>
+<section id="f-2-frac-presicion-recall-presicion-recall">
+<h2><span class="math notranslate nohighlight">\(F = 2*\frac{Presicion * recall}{Presicion + recall}\)</span><a class="headerlink" href="#f-2-frac-presicion-recall-presicion-recall" title="Permalink to this heading">#</a></h2>
+<p>Definición: La media armónica de Precisión y Recall, proporciona un balance entre estas dos métricas</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -547,6 +500,37 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Matriz de confusión</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-frac-tp-tn-tp-tn-fp-fn"><span class="math notranslate nohighlight">\(Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-frac-tp-tp-fp"><span class="math notranslate nohighlight">\(Precision = \frac{TP}{TP+FP}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-frac-tp-tp-fn"><span class="math notranslate nohighlight">\(Recall = \frac{TP}{TP+FN}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-2-frac-presicion-recall-presicion-recall"><span class="math notranslate nohighlight">\(F = 2*\frac{Presicion * recall}{Presicion + recall}\)</span></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
