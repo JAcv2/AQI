@@ -169,10 +169,6 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Matriz de confusión</a></li>
-
-
-
-
 </ul>
 
     </div>
@@ -366,13 +362,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Matriz de confusión</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -409,30 +403,31 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
 <p>Falsos negativos, casos en los que el modelo predijo negativo pero la realidad es positiva.</p>
 <p><strong>TP = True Positive</strong></p>
 <p>Verdaderos positivos, casos en los que el modelo predijo positivo y la realidad es positiva.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="accuracy">
-<h1>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h1>
+<section id="accuracy">
+<h2>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h2>
 <p>¿Cuantas de las predicciones son correctas?</p>
 <p><span class="math notranslate nohighlight">\(Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\)</span></p>
 <p>Definición: La proporción de predicciones correctas entre el total de predicciones.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="precision">
-<h1>Precision<a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h1>
+<section id="precision">
+<h2>Precision<a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h2>
 <p>Conocido tambien como valor predictivo positivo (VPP), intenta responder la pregunta:</p>
 <p>¿Qué proporción de predicciones positivas fue correcta?</p>
 <p><span class="math notranslate nohighlight">\(Precision = \frac{TP}{TP+FP}\)</span></p>
 <p>Definición: La proporción de verdaderos positivos entre todos los casos predichos como positivos. Es muy usada cuando el objetivo es limitar el número de falsos positivos.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="recall">
-<h1>Recall<a class="headerlink" href="#recall" title="Permalink to this heading">#</a></h1>
+<section id="recall">
+<h2>Recall<a class="headerlink" href="#recall" title="Permalink to this heading">#</a></h2>
 <p>¿qué proporción de positivos reales se identificó en forma correcta?</p>
 <p><span class="math notranslate nohighlight">\(Recall = \frac{TP}{TP+FN}\)</span></p>
 <p>Definición: La proporción de verdaderos positivos entre todos los casos realmente positivos. Es muy usada cuando el objetivo es limitar el número de falsos positivos.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="f1-score">
-<h1>F1-Score<a class="headerlink" href="#f1-score" title="Permalink to this heading">#</a></h1>
+<section id="f1-score">
+<h2>F1-Score<a class="headerlink" href="#f1-score" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(F = 2*\frac{Presicion * recall}{Presicion + recall}\)</span></p>
 <p>Definición: La media armónica de Precisión y Recall, proporciona un balance entre estas dos métricas</p>
+<p>Actualizado</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -489,13 +484,11 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Matriz de confusión</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
