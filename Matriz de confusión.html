@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -78,15 +77,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -169,6 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Matriz de confusión</a></li>
+
+
 </ul>
 
     </div>
@@ -324,10 +316,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -335,7 +327,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -362,11 +354,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Matriz de confusión</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-aplicado">Ejemplo aplicado</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pretenciones-etb">Pretenciones ETB</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -379,8 +377,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matriz-de-confusion">
 <h1>Matriz de confusión<a class="headerlink" href="#matriz-de-confusion" title="Permalink to this heading">#</a></h1>
-<p>Un matriz de confusión resume el rendimiento de una modelo de clasificación para identificar casos en los que el modelo se confunde, lo que puede indicar ajustes en el modelo.</p>
-<p>A continuacion explicaremos la correcta interpretación de una matriz de confusión:</p>
+<p>Un matriz de confusión resume el rendimiento de un modelo de clasificación para identificar casos en los que el modelo se confunde, lo que puede indicar ajustes en el modelo.</p>
+<p>A continuación explicaremos la correcta interpretación de una matriz de confusión:</p>
 <p>La salida es una matriz de 2x2, las filas corresponden a las clases verdaderas y las columnas a las clases predichas.
 Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de cada clase.</p>
 <div class="cell docutils container">
@@ -392,7 +390,7 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d6bca273aac80e17b5caf0b89c9ec7556c2206c12cca51493484fe69659e110d.png" src="_images/d6bca273aac80e17b5caf0b89c9ec7556c2206c12cca51493484fe69659e110d.png" />
+<img alt="_images/9d8734ae1a11f137c1779678fe7a6963260e9641e3bc97fa46b8b0de7ae9701e.png" src="_images/9d8734ae1a11f137c1779678fe7a6963260e9641e3bc97fa46b8b0de7ae9701e.png" />
 </div>
 </div>
 <p><strong>TN = True Negative</strong></p>
@@ -405,13 +403,13 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
 <p>Verdaderos positivos, casos en los que el modelo predijo positivo y la realidad es positiva.</p>
 <section id="accuracy">
 <h2>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h2>
-<p>¿Cuantas de las predicciones son correctas?</p>
+<p>¿Cuántas de las predicciones son correctas?</p>
 <p><span class="math notranslate nohighlight">\(Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\)</span></p>
 <p>Definición: La proporción de predicciones correctas entre el total de predicciones.</p>
 </section>
 <section id="precision">
 <h2>Precision<a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h2>
-<p>Conocido tambien como valor predictivo positivo (VPP), intenta responder la pregunta:</p>
+<p>Conocido también como valor predictivo positivo (VPP), intenta responder la pregunta:</p>
 <p>¿Qué proporción de predicciones positivas fue correcta?</p>
 <p><span class="math notranslate nohighlight">\(Precision = \frac{TP}{TP+FP}\)</span></p>
 <p>Definición: La proporción de verdaderos positivos entre todos los casos predichos como positivos. Es muy usada cuando el objetivo es limitar el número de falsos positivos.</p>
@@ -426,8 +424,83 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
 <h2>F1-Score<a class="headerlink" href="#f1-score" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(F = 2*\frac{Presicion * recall}{Presicion + recall}\)</span></p>
 <p>Definición: La media armónica de Precisión y Recall, proporciona un balance entre estas dos métricas</p>
-<p>Actualizado</p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ejemplo-aplicado">
+<h1>Ejemplo aplicado<a class="headerlink" href="#ejemplo-aplicado" title="Permalink to this heading">#</a></h1>
+<p>Imagina que tienes un centro de llamadas que recibe llamadas de clientes que tienen problemas con sus servicios de Internet. Tu trabajo es clasificar estas llamadas en dos categorías: “Problemas de Conexión” y “Consultas Generales”.</p>
+<p><strong>Accuracy (Exactitud):</strong></p>
+<p>La exactitud se refiere a cuántas llamadas lograste clasificar correctamente en sus categorías (Problemas de Conexión o Consultas Generales) en comparación con todas las llamadas.
+Si clasificas correctamente 90 de cada 100 llamadas, entonces tienes un accuracy del 90%, lo que significa que eres bastante preciso en asignar las llamadas a las categorías correctas.</p>
+<p><strong>Precision (Precisión):</strong></p>
+<p>La precisión se trata de cuántas de las llamadas que clasificaste como “Problemas de Conexión” realmente eran problemas de conexión.
+Si dices que 9 de cada 10 llamadas son “Problemas de Conexión” y efectivamente 9 de cada 10 son problemas de conexión, entonces tienes una alta precisión del 90%.</p>
+<p><strong>Recall (Recuperación o Sensibilidad):</strong></p>
+<p>El recall se refiere a cuántas de las llamadas que son realmente “Problemas de Conexión” lograste identificar correctamente como tal.
+Si en realidad hay 10 llamadas de “Problemas de Conexión” y logras identificar 9 de ellas, entonces tienes un alto recall del 90%.</p>
+<p><strong>F1-Score:</strong></p>
+<p>El F1-Score combina precisión y recall en un solo número.
+Si tienes una alta precisión pero un bajo recall, significa que estás siendo muy selectivo en clasificar las llamadas como “Problemas de Conexión”. Si tienes un alto recall pero baja precisión, estás identificando muchas llamadas como “Problemas de Conexión”, incluso si no lo son. El F1-Score te ayuda a encontrar un equilibrio entre estos dos factores.</p>
+<p>Entonces, en tu centro de llamadas, un alto accuracy significa que estás clasificando correctamente la mayoría de las llamadas en sus categorías, una alta precisión indica que no estás etiquetando erróneamente muchas llamadas, un alto recall muestra que no estás dejando de identificar problemas de conexión y un alto F1-Score es un equilibrio entre precisión y recall. Estos indicadores te ayudan a evaluar el rendimiento de tu centro de llamadas en la clasificación de llamadas de clientes.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pretenciones-etb">
+<h1>Pretenciones ETB<a class="headerlink" href="#pretenciones-etb" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;Pretension&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;ENVÍO DE GRABACIÓN O CONTRATO&#39;</span><span class="p">,</span> <span class="mi">2727</span><span class="p">,</span> <span class="mf">0.825479</span><span class="p">,</span> <span class="mf">0.913991</span><span class="p">,</span> <span class="mf">0.864386</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;CENTRALES DE RIESGO&#39;</span><span class="p">,</span> <span class="mi">1704</span><span class="p">,</span> <span class="mf">0.752627</span><span class="p">,</span> <span class="mf">0.661074</span><span class="p">,</span> <span class="mf">0.895775</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;PAZ Y SALVO&#39;</span><span class="p">,</span> <span class="mi">996</span><span class="p">,</span> <span class="mf">0.748222</span><span class="p">,</span> <span class="mf">0.684896</span><span class="p">,</span> <span class="mf">0.928773</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;EXONERACIÓN CLÁUSULA DE PERMANENCIA&#39;</span><span class="p">,</span> <span class="mi">719</span><span class="p">,</span> <span class="mf">0.738510</span><span class="p">,</span> <span class="mf">0.817544</span><span class="p">,</span> <span class="mf">0.933602</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;RETIRO DEL SERVICIO&#39;</span><span class="p">,</span> <span class="mi">2054</span><span class="p">,</span> <span class="mf">0.734177</span><span class="p">,</span> <span class="mf">0.769553</span><span class="p">,</span> <span class="mf">0.839437</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;AJUSTE FACTURA&#39;</span><span class="p">,</span> <span class="mi">2931</span><span class="p">,</span> <span class="mf">0.708013</span><span class="p">,</span> <span class="mf">0.676810</span><span class="p">,</span> <span class="mf">0.785915</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;SUPLANTACION&#39;</span><span class="p">,</span> <span class="mi">464</span><span class="p">,</span> <span class="mf">0.489451</span><span class="p">,</span> <span class="mf">0.405594</span><span class="p">,</span> <span class="mf">0.951308</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;FALLAS MASIVAS&#39;</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mf">0.047619</span><span class="p">,</span> <span class="mf">0.024390</span><span class="p">,</span> <span class="mf">0.983903</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;CANCELACION&#39;</span><span class="p">,</span> <span class="mi">285</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.964588</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;ANULACIÓN DE LA DEUDA&#39;</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.978672</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;ADICIÓN SVA&#39;</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.984306</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Imprimir la tabla</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">tabulate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="s1">&#39;firstrow&#39;</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s1">&#39;fancy_grid&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╒═════════════════════════════════════╤═════════╤══════════╤══════════╤════════════╕
+│ Pretension                          │   Count │       f1 │   recall │   accuracy │
+╞═════════════════════════════════════╪═════════╪══════════╪══════════╪════════════╡
+│ ENVÍO DE GRABACIÓN O CONTRATO       │    2727 │ 0.825479 │ 0.913991 │   0.864386 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ CENTRALES DE RIESGO                 │    1704 │ 0.752627 │ 0.661074 │   0.895775 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ PAZ Y SALVO                         │     996 │ 0.748222 │ 0.684896 │   0.928773 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ EXONERACIÓN CLÁUSULA DE PERMANENCIA │     719 │ 0.73851  │ 0.817544 │   0.933602 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ RETIRO DEL SERVICIO                 │    2054 │ 0.734177 │ 0.769553 │   0.839437 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ AJUSTE FACTURA                      │    2931 │ 0.708013 │ 0.67681  │   0.785915 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ SUPLANTACION                        │     464 │ 0.489451 │ 0.405594 │   0.951308 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ FALLAS MASIVAS                      │     187 │ 0.047619 │ 0.02439  │   0.983903 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ CANCELACION                         │     285 │ 0        │ 0        │   0.964588 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ ANULACIÓN DE LA DEUDA               │     184 │ 0        │ 0        │   0.978672 │
+├─────────────────────────────────────┼─────────┼──────────┼──────────┼────────────┤
+│ ADICIÓN SVA                         │     170 │ 0        │ 0        │   0.984306 │
+╘═════════════════════════════════════╧═════════╧══════════╧══════════╧════════════╛
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -455,10 +528,11 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="intro.html"
@@ -469,7 +543,10 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
         <p class="prev-next-title">Bienvenido a AQI Jupyter Book</p>
       </div>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -484,11 +561,17 @@ Cada celda cuenta la frecuencia de clasificaciones correctas o incorrectas de ca
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Matriz de confusión</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1-Score</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-aplicado">Ejemplo aplicado</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pretenciones-etb">Pretenciones ETB</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -535,8 +618,8 @@ By Julian Acevedo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
